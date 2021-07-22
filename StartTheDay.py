@@ -81,47 +81,53 @@ win = Tk()
 helv13 = tkFont.Font(family='Helvetica', size=13, weight=tkFont.BOLD)
 helv18 = tkFont.Font(family='Helvetica', size=18, weight=tkFont.BOLD)
 
-wrapper = ttk.Frame(win)
+
+wrapper = Canvas(win,bg = "#536B78")
 wrapper.grid(column=0, row=0, sticky=(N, W, E, S))
+wrapper.config(highlightbackground="#536B78")
 win.columnconfigure(0, weight=1,pad= 50)
 win.rowconfigure(0, weight=1,pad= 20)
 
 ###
-setStart = Canvas(wrapper, width=300, height= 100, bg='blue')
+setStart = Canvas(wrapper, width=300, height= 100, bg='#637081')
 setStart.grid(column=1, row=1,sticky=(N, W, E, S))
-buttonNew = Button(setStart, text = "Start",font=helv18).place(relx=.5,rely=.5,anchor= CENTER)
+setStart.config(highlightbackground="#536B78")
+buttonNew = Button(setStart, text = "Start",bg ="#ACCBE1",font=helv18, command = runApps).place(relx=.5,rely=.5,anchor= CENTER)
 ###
 
 
 ####
-setConfig = Canvas(wrapper, width=190, height= 100, bg='red')
+setConfig = Canvas(wrapper, width=190, height= 100, bg='#637081')
 setConfig.grid(column=2, row=1,sticky=(N,W))
-
-buttonNew = Button(setConfig, text = "New",font=helv13, command = newDayRoutine).place(relx=.3,rely=.3,anchor= CENTER)
-buttonDelete = Button(setConfig, text = "Delete",font=helv13).place(relx=.3,rely=.7,anchor= CENTER)
-buttonReload = Button(setConfig, text = "Reload",font=helv13, command = reloadAll).place(relx=.7,rely=.5,anchor= CENTER)
+setConfig.config(highlightbackground="#536B78")
+buttonNew = Button(setConfig, text = "New",font=helv13, bg='#7C98B3' , command = newDayRoutine).place(relx=.3,rely=.3,anchor= CENTER)
+buttonDelete = Button(setConfig, text = "Delete", bg='#7C98B3',font=helv13).place(relx=.3,rely=.7,anchor= CENTER)
+buttonReload = Button(setConfig, text = "Reload", bg='#7C98B3',font=helv13, command = reloadAll).place(relx=.7,rely=.5,anchor= CENTER)
 #buttonNew.pack()
 ###
 
 
 
-setView = Canvas(wrapper, width=100, height= 300, bg='green')
+setView = Canvas(wrapper, width=100, height= 300, bg='#637081')
 setView.grid(column=1, row=2,sticky=(N,W,E))
-
+setView.config(highlightbackground="#536B78")
 
 wrapper1 = LabelFrame(setView)
 wrapper1.pack(fill = "both", expand = "yes")
 
-setChange = Canvas(wrapper, width=190, height= 300, bg='yellow')
+setChange = Canvas(wrapper, width=190, height= 300, bg='#637081')
+setChange.config(highlightbackground="#536B78")
 setChange.grid(column=2, row=2,sticky=(N,W))
-buttonUp = Button(setChange, text = ">",font=helv13, command = UpindexFiles).place(relx=.55,rely=.1,anchor= CENTER)
-buttonDown = Button(setChange, text = "<",font=helv13, command = DownindexFiles).place(relx=.35,rely=.1,anchor= CENTER)
-buttonRun = Button(setChange, text = "Run",font=helv13, command = runApps).place(relx=.45,rely=.25,anchor= CENTER)
+buttonUp = Button(setChange, text = ">",font=helv13, bg='#7C98B3', command = UpindexFiles).place(relx=.55,rely=.1,anchor= CENTER)
+buttonDown = Button(setChange, text = "<",font=helv13, bg='#7C98B3', command = DownindexFiles).place(relx=.35,rely=.1,anchor= CENTER)
+buttonRun = Button(setChange, text = "Run",font=helv13, bg='#7C98B3', command = runApps).place(relx=.45,rely=.25,anchor= CENTER)
 
 reloadAll()
 
 
 win.geometry("500x410")
-#win.resizable(False,False)
+win.resizable(False,False)
 win.title("Start The Day")
+
+win.configure(bg='#637081')
 win.mainloop()
